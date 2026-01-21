@@ -6,8 +6,6 @@
 
 ***Overview***
 -
-My personal project is building a functional hospital management database using MySQL that tackles three operational challenges in modern healthcare facilities:
-
 - Patient Care Workflows: Tracks patient admissions, appointments, treatments, and medical histories in real-time to reduce wait times and improve care coordination.
 - Resource Allocation: Manages doctors, nurses, equipment, and room assignments to maximize utilization and minimize operational bottlenecks.
 - Financial Operations: Monitors billing, insurance claims, and payment processing to reduce revenue leakage and improve cash flow.
@@ -38,17 +36,6 @@ My personal project is building a functional hospital management database using 
 ***Relationship Diagram***
 -
 ![Demo Diagram](Nattawut_HMS_Diagram.jpg)
-
-***Solutions Approach***
--
-| Issues | SQL solution | Business Impact |
-| :---------- | :-----------: | -----------: |
-| 30-Day Readmission Tracking | Window function (LEAD) to identify readmission patterns | Lowers CMS penalties, better discharge planning |
-| Doctor Workload Monitoring | Ranked appointment counts with LIMIT | Protects burnout, balances schedules |
-| Insurance Claim rejects | Multi-level CTE analysis of denial patterns | Recovers lost revenue, improves submission accuracy |
-| Medication Stockouts | Subquery-based threshold alerts | Confirms medication availability, reduces waste |
-| Patient Payment Collection | Cohort comparison using UNION | Finding at-risk accounts, improves cash flow |
-| Appointment NOT showing | CASE-based percentage calculations | Controls wasted slots, better decision-making | 
 
 # <p align="center">Sample Queries<p/>
 **Prerequisites:**
@@ -193,14 +180,6 @@ WHERE
 - Subqueries and correlated subqueries
 - Performance optimization with indexes
 - Data integrity with constraints (CHECK, FOREIGN KEY)
-
-**Business Acumen:**
-
-- Healthcare quality metrics (readmission rates, length of stay)
-- Revenue cycle management (claims, denials, collections)
-- Clinical workflows (admissions, discharges, prescriptions)
-- Resource optimization (staff workload, bed capacity, inventory)
-- Operational analytics for decision-making
 
 **Acknowledgments:**
 
