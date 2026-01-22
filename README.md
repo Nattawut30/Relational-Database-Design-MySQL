@@ -1,5 +1,5 @@
 # <p align="center"> SQL: Hospital Management System <p/>
-<br>**Nattawut Boonnoon**<br/>
+<br>**Nattawut Boonnoon**
 - LinkedIn: www.linkedin.com/in/nattawut-bn
 - Email: nattawut.boonnoon@hotmail.com
 - Phone: (+66) 92 271 6680
@@ -166,9 +166,9 @@ WHERE
     p.insurance_provider_id IS NULL;
 `````
 
-# <p align="center">Key Learning Outcomes<p/>
+# <p align="center">Acknowledgments<p/>
 
-**Technical Expertise:**
+**Key Learning Outcomes:**
 
 - Database normalization (3NF)
 - Complex JOIN operations (INNER, LEFT)
@@ -181,8 +181,5 @@ WHERE
 - Performance optimization with indexes
 - Data integrity with constraints (CHECK, FOREIGN KEY)
 
-**Acknowledgments:**
-
-- Healthcare domain knowledge inspired by real-world hospital systems
-- SQL best practices from industry standards
-- Database design principles following E.F. Codd's relational model
+**Accademic Paper:**
+- IBM Research Laboratory, E.F. Codd. (1970). *"A Relational Model of Data for Large Shared Data Banks"*
