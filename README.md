@@ -1,4 +1,4 @@
-# <p align="center"> Relational Database Design: Healthcare Management System <p/>
+# <p align="center"> Relational Database Design: Healthcare System <p/>
 <br>**Nattawut Boonnoon**
 - LinkedIn: www.linkedin.com/in/nattawut-bn
 - Email: nattawut.boonnoon@hotmail.com
