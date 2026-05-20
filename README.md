@@ -45,27 +45,6 @@ https://www.mysql.com/
 - At least 500MB free disk space.
 - SQL Knowledges
 
-**Installation:**
-1. Clone the Repository
-   `````bash
-   git clone https://github.com/yourusername/hospital-management-system.git
-   cd hospital-management-system
-   `````
-2. Create the Database
-   `````bash
-   mysql -u root -p < schema/Nattawut_HMS_Schema.sql
-   `````
-3. Load Sample Data
-   `````bash
-   # Place all CSV files from data/ folder in MySQL's secure file directory
-   # Then run the LOAD DATA commands in Nattawut_HMS_Schema.sql
-   # Or manually import CSVs using your MySQL client
-   `````
-4. Run Sample Queries
-   `````bash
-   mysql -u root -p hospital_management < queries/Nattawut_HMS_Analytics.sql
-   `````
-
 ***Basic Level***
 -
 **Query Example: Patient Emergency Contact Lookup**
