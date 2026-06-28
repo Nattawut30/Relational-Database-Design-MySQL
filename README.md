@@ -2,7 +2,6 @@
 <br>**Nattawut Boonnoon**
 - LinkedIn: www.linkedin.com/in/nattawut-bn
 - Email: nattawut.boonnoon@hotmail.com
-- Phone: (+66) 92 271 6680
 
 ***Overview***
 -
