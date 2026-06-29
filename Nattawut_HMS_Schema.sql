@@ -215,6 +215,22 @@ CREATE TABLE insurance_claims (
 -- PURPOSE: Enforce data integrity rules at database level
 -- VALIDATES: Age ranges, salary limits, monetary values, date logic
 
+-- Inventory
+CREATE TABLE inventory (
+    inventory_id    INT PRIMARY KEY AUTO_INCREMENT,
+    item_name       VARCHAR(100) NOT NULL,
+    category        ENUM('Medication', 'Equipment', 'Supplies', 'PPE', 'Lab Reagents') NOT NULL,
+    quantity_in_stock INT NOT NULL DEFAULT 0,
+    reorder_level   INT NOT NULL,
+    unit_cost       DECIMAL(10, 2) NOT NULL,
+    supplier        VARCHAR(100),
+    unit            VARCHAR(30) NOT NULL DEFAULT 'units',
+    last_restock_date DATE,
+    expiry_date     DATE,
+    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
 ALTER TABLE patients 
 ADD CONSTRAINT chk_patient_age 
 CHECK (TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) >= 0 AND TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) <= 120);
@@ -242,6 +258,14 @@ CHECK (end_date IS NULL OR end_date >= start_date);
 ALTER TABLE admissions 
 ADD CONSTRAINT chk_admission_dates 
 CHECK (discharge_date IS NULL OR discharge_date >= admission_date);
+
+ALTER TABLE inventory
+ADD CONSTRAINT chk_inventory_stock
+CHECK (quantity_in_stock >= 0);
+
+ALTER TABLE inventory
+ADD CONSTRAINT chk_inventory_cost
+CHECK (unit_cost >= 0 AND reorder_level > 0);
 
 
 -- ========================================
@@ -288,6 +312,10 @@ CREATE INDEX idx_bed_ward ON beds(ward_id);
 CREATE INDEX idx_claim_status ON insurance_claims(claim_status);
 CREATE INDEX idx_claim_provider ON insurance_claims(insurance_provider_id);
 
+-- Inventory indexes
+CREATE INDEX idx_inventory_category ON inventory(category);
+CREATE INDEX idx_inventory_stock ON inventory(quantity_in_stock);
+CREATE INDEX idx_inventory_reorder ON inventory(reorder_level);
 
 -- ========================================
 -- QUERY 4: Verify Referential Integrity
