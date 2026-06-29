@@ -3,7 +3,7 @@
 -- LinkedIn: www.linkedin.com/in/nattawut-bn
 -- GitHub: @Nattawut30
 -- Email: nattawut.boonnoon@hotmail.com
--- Phone: (+66) 92 271 6680
+
 -- Database Setup & Validation
 -- ========================================
 
@@ -114,10 +114,6 @@ CREATE TABLE medical_history (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
 ) ENGINE=InnoDB;
--- The problem isn’t my SQL grammar but data semantics and naming consistency.
--- Use singular nouns for table names (medical_history),
--- Plural only if the table holds a collection conceptually (patients is fine).
--- Fixed. Thanks for the feedback!
 
 -- Prescriptions
 CREATE TABLE prescriptions (
