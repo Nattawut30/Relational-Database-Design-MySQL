@@ -3,7 +3,6 @@
 -- LinkedIn: www.linkedin.com/in/nattawut-bn
 -- GitHub: @Nattawut30
 -- Email: nattawut.boonnoon@hotmail.com
--- Phone: (+66) 92 271 6680
 -- ANALYTICS QUERIES - 12 QUERIES
 -- 4 Basic | 4 Intermediate | 4 Advanced
 -- ========================================
@@ -33,7 +32,7 @@ SELECT
 FROM 
     patients
 WHERE 
-    patient_id = 25  -- Replace with actual patient ID now
+    patient_id = 25  
 ORDER BY 
     patient_id;
 
@@ -114,7 +113,7 @@ FROM
     INNER JOIN staff s ON pr.staff_id = s.staff_id
     INNER JOIN departments d ON s.department_id = d.department_id
 WHERE 
-    pr.patient_id = 10  -- Replace with actual patient ID
+    pr.patient_id = 10  
     AND pr.status = 'Active'
     AND (pr.end_date IS NULL OR pr.end_date >= CURDATE())
 ORDER BY 
@@ -150,7 +149,7 @@ WHERE
 GROUP BY 
     p.patient_id, p.first_name, p.last_name, p.date_of_birth
 HAVING 
-    total_visits >= 4  -- Flag patients with 4+ visits
+    total_visits >= 4  
 ORDER BY 
     total_visits DESC;
 
@@ -240,7 +239,7 @@ WHERE
 GROUP BY 
     at.type_name, at.base_cost
 HAVING 
-    total_scheduled >= 10  -- Only statistically significant samples
+    total_scheduled >= 10 
 ORDER BY 
     no_show_rate DESC;
 
@@ -484,7 +483,7 @@ FROM
 GROUP BY 
     provider_name, coverage_type
 HAVING 
-    total_claims >= 5  -- Only providers with meaningful sample size
+    total_claims >= 5 
 ORDER BY 
     denial_rate DESC, total_denied DESC;
 
