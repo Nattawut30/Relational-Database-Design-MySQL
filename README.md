@@ -3,16 +3,16 @@
 - LinkedIn: www.linkedin.com/in/nattawut-bn
 - Email: nattawut.boonnoon@hotmail.com
 
-***Overview***
--
+## Overview
+
 - Patient Care Workflows: Tracks patient admissions, appointments, treatments, and medical histories in real-time to reduce wait times and improve care coordination.
 - Resource Allocation: Manages doctors, nurses, equipment, and room assignments to maximize utilization and minimize operational bottlenecks.
 - Financial Operations: Monitors billing, insurance claims, and payment processing to reduce revenue leakage and improve cash flow.
 
 **Why It Matters:** Hospitals struggle with fragmented data systems that lead to scheduling conflicts, unused resources, and billing errors costing millions annually. I hope this database acts as a centralized backbone example, giving administrators clear visibility into operations so they can make better decisions that directly impact outcomes.
 
-***Database Architecture***
--
+## Database Architecture
+
 **Modules:**
 - Patient Management: Complete demographics, medical records, and insurance information.
 - Appointment Scheduling: A collaborative department scheduling system with status tracking.
@@ -32,8 +32,8 @@
 - 180 Hospital Beds across 12 wards
 - 1,000 Billing Transactions
 
-***Relationship Diagram***
--
+## Relationship Diagram
+
 ![Demo Diagram](Nattawut_HMS_Diagram.jpg)
 
 # <p align="center">Sample Queries<p/>
@@ -44,8 +44,8 @@ https://www.mysql.com/
 - At least 500MB free disk space.
 - SQL Knowledges
 
-***Basic Level***
--
+## Basic Level
+
 **Query Example: Patient Emergency Contact Lookup**
 - PROBLEM: ER needs immediate patient contact info for unconscious patients
 - WHY IT MATTERS: Delays in contacting family can complicate critical care decisions
@@ -70,8 +70,8 @@ ORDER BY
     patient_id;
 `````
 
-***Intermediate Level***
--
+## Intermediate Level
+
 **Query Example: Department Revenue Analysis (Last Quarter)**
 - PROBLEM: Financial planning needs to know which departments drive revenue
 - WHY IT MATTERS: Revenue data guides hiring, equipment purchases, and service expansion
@@ -101,8 +101,8 @@ ORDER BY
     total_revenue DESC;
 `````
 
-***Advanced Level***
--
+## Advanced Level
+
 **Query Example: Patients With vs Without Insurance (UNION)**
 - PROBLEM: Uninsured patients have different billing and care coordination needs
 - WHY IT MATTERS: Uninsured patients are 3x more likely to have unpaid balances
@@ -144,9 +144,7 @@ WHERE
     p.insurance_provider_id IS NULL;
 `````
 
-# <p align="center">Acknowledgments<p/>
-
-**Key Learning Outcomes:**
+## Key Learning Outcomes
 
 - Database normalization (3NF)
 - Complex JOIN operations (INNER, LEFT)
@@ -159,5 +157,5 @@ WHERE
 - Performance optimization with indexes
 - Data integrity with constraints (CHECK, FOREIGN KEY)
 
-**Accademic Paper:**
+## Academic Paper
 - IBM Research Laboratory, E.F. Codd. (1970). *"A Relational Model of Data for Large Shared Data Banks"*
