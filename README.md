@@ -5,11 +5,7 @@
 
 ## Overview
 
-- Patient Care Workflows: Tracks patient admissions, appointments, treatments, and medical histories in real-time to reduce wait times and improve care coordination.
-- Resource Allocation: Manages doctors, nurses, equipment, and room assignments to maximize utilization and minimize operational bottlenecks.
-- Financial Operations: Monitors billing, insurance claims, and payment processing to reduce revenue leakage and improve cash flow.
-
-**Why It Matters:** Hospitals struggle with fragmented data systems that lead to scheduling conflicts, unused resources, and billing errors costing millions annually. I hope this database acts as a centralized backbone example, giving administrators clear visibility into operations so they can make better decisions that directly impact outcomes.
+Hospitals struggle with fragmented data systems that lead to scheduling conflicts, unused resources, and billing errors costing millions annually. I hope this database acts as a centralized backbone example, giving administrators clear visibility into operations so they can make better decisions that directly impact outcomes.
 
 ## Database Architecture
 
@@ -34,7 +30,7 @@
 
 ## Relationship Diagram
 
-![Demo Diagram](Nattawut_HMS_Diagram.jpg)
+![Demo Diagram](picture/relationship_diagram.jpg)
 
 # <p align="center">Sample Queries<p/>
 **Prerequisites:**
