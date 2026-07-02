@@ -1,7 +1,7 @@
 USE hospital_db;
 
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE insurance_claims;
+TRUNCATE TABLE insurance_claim;
 TRUNCATE TABLE billing;
 TRUNCATE TABLE admissions;
 TRUNCATE TABLE beds;
