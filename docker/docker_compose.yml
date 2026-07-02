@@ -11,10 +11,9 @@ services:
     ports:
       - "3306:3306"
     volumes:
-
       - ./schema.sql:/docker-entrypoint-initdb.d/1_schema.sql
       - ./seed_data.sql:/docker-entrypoint-initdb.d/2_seed.sql
-      - ./snalytics.sql:/docker-entrypoint-initdb.d/3_analytics.sql
+      - ./analytics.sql:/docker-entrypoint-initdb.d/3_analytics.sql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
       timeout: 5s
