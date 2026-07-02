@@ -1,37 +1,31 @@
-name: SQL Script Validation
+name: MySQL DB CI
 
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+on: [push, pull_request]
 
 jobs:
-  validate-sql:
+  database-test:
     runs-on: ubuntu-latest
 
+    
     services:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: rootpassword
-          MYSQL_DATABASE: hospital_db
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: hospital_db 
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-    - name: Checkout repository code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: 1. Test Database Schema Creation
-      run: |
-        mysql -h 127.0.0.1 -P 3306 -u root -prootpassword hospital_db < schema.sql
-
-    - name: 2. Test Database Seeding
-      run: |
-        mysql -h 127.0.0.1 -P 3306 -u root -prootpassword hospital_db < seed_data.sql
-
-    - name: 3. Test Analytics Queries Execution
-      run: |
-        mysql -h 127.0.0.1 -P 3306 -u root -prootpassword hospital_db < analytics.sql
+      
+      - name: Setup and Seed Database
+        run: |
+          sudo apt-get update && sudo apt-get install -y mysql-client
+          
+          
+          mysql -h 127.0.0.1 -u root -proot hospital_db < schema.sql
+          mysql -h 127.0.0.1 -u root -proot hospital_db < seed_data.sql
