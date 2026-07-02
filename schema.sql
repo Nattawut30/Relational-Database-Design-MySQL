@@ -232,9 +232,9 @@ CREATE TABLE inventory (
     updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
-ALTER TABLE patients 
-ADD CONSTRAINT chk_patient_age 
-CHECK (TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) >= 0 AND TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) <= 120);
+ALTER TABLE patients
+ADD CONSTRAINT chk_patient_age
+CHECK (date_of_birth >= '1900-01-01');
 
 ALTER TABLE staff 
 ADD CONSTRAINT chk_staff_salary 
