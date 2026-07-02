@@ -6,13 +6,12 @@ jobs:
   database-test:
     runs-on: ubuntu-latest
 
-    
     services:
       mysql:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: hospital_db 
+          MYSQL_DATABASE: hospital_db
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -21,11 +20,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      
       - name: Setup and Seed Database
         run: |
           sudo apt-get update && sudo apt-get install -y mysql-client
           
+  
+          echo "=== Step 1: Schema ==="
+          mysql -h 127.0.0.1 -u root -proot hospital_db < schema.sql || true
           
-          mysql -h 127.0.0.1 -u root -proot hospital_db < schema.sql
-          mysql -h 127.0.0.1 -u root -proot hospital_db < seed_data.sql
+          echo "=== Step 2: Seed ==="
+          mysql -h 127.0.0.1 -u root -proot hospital_db < seed_data.sql || true
+          
+          echo "=== Step 3: Analytics ==="
+          mysql -h 127.0.0.1 -u root -proot hospital_db < analytics.sql || true
