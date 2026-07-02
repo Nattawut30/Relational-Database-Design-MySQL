@@ -16,17 +16,6 @@ Hospitals struggle with fragmented data systems that lead to scheduling conflict
 - Billing & Insurance: Financial transactions, insurance claims, and payment tracking.
 - Ward/Bed Management: Real-time bed occupancy and patient admission procedures.
 
-**Statistics:**
-
-- 13 Interconnected Tables
-- 150 Patient Records
-- 250 Staff Members (Doctors, Nurses, Administrative Staff, Technicians)
-- 1,000 Appointments
-- 5,000 Medical History Records
-- 3,500 Prescriptions
-- 180 Hospital Beds across 12 wards
-- 1,000 Billing Transactions
-
 ## Relationship Diagram
 
 ![Demo Diagram](picture/relationship_diagram.jpg)
@@ -60,7 +49,7 @@ SELECT
 FROM 
     patients
 WHERE 
-    patient_id = 25  -- Replace with actual patient ID now
+    patient_id = 25
 ORDER BY 
     patient_id;
 `````
