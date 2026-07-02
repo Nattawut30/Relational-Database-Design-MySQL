@@ -15,7 +15,6 @@ Hospitals struggle with fragmented data systems that lead to scheduling conflict
 - Staff management includes personnel data, department duties, and performance indicators
 - Billing & Insurance: Financial transactions, insurance claims, and payment tracking.
 - Ward/Bed Management: Real-time bed occupancy and patient admission procedures.
-- Inventory Management: Track medical supplies with automated reorder alerts.
 
 **Statistics:**
 
