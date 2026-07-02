@@ -182,34 +182,10 @@ ORDER BY
     total_revenue DESC;
 
 
--- -------------------------------------
--- QUERY 7: Medication Inventory Below Reorder Level
--- -------------------------------------
--- PROBLEM: Pharmacy must avoid stockouts of critical medications
--- WHY IT MATTERS: Medication stockouts delay patient care and violate quality standards
--- SOLUTION: Subquery to calculate days until stockout based on usage rate
-
-SELECT 
-    i.inventory_id,
-    i.item_name,
-    i.category,
-    i.quantity_in_stock,
-    i.reorder_level,
-    (i.reorder_level - i.quantity_in_stock) AS units_below_threshold,
-    i.unit_cost,
-    ROUND((i.reorder_level - i.quantity_in_stock) * i.unit_cost, 2) AS reorder_cost,
-    i.last_restock_date,
-    DATEDIFF(CURDATE(), i.last_restock_date) AS days_since_restock,
-    -- Estimate days until stockout (assuming 5 units used per day)
-    ROUND(i.quantity_in_stock / 5.0, 1) AS estimated_days_remaining
-FROM 
-    inventory i
-WHERE 
-    i.quantity_in_stock <= i.reorder_level
-ORDER BY 
-    estimated_days_remaining ASC,
-    reorder_cost DESC
-LIMIT 20;
+-- =================================================================
+-- QUERY 7: Inventory Management (REMOVED)
+-- Removed: Supporting 'inventory' table is currently out of scope.
+-- =================================================================
 
 
 -- -------------------------------------
