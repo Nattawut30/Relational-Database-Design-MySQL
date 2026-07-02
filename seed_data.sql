@@ -1,7 +1,7 @@
 USE hospital_db;
 
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE insurance_claims;
+TRUNCATE TABLE departments;
 TRUNCATE TABLE billing;
 TRUNCATE TABLE admissions;
 TRUNCATE TABLE beds;
@@ -11,8 +11,8 @@ TRUNCATE TABLE medical_history;
 TRUNCATE TABLE appointments;
 TRUNCATE TABLE patients;
 TRUNCATE TABLE staff;
+TRUNCATE TABLE insurance_claims;
 TRUNCATE TABLE insurance_providers;
-TRUNCATE TABLE departments;
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO departments (department_name, building) VALUES
