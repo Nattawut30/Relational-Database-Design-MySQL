@@ -11,7 +11,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      # ดึงสคริปต์เข้าไปรันตอนเปิดเครื่องครั้งแรกตามลำดับชื่อไฟล์ 
+
       - ./Nattawut_HMS_Schema.sql:/docker-entrypoint-initdb.d/1_schema.sql
       - ./seed_data.sql:/docker-entrypoint-initdb.d/2_seed.sql
       - ./Nattawut_HMS_Analytics.sql:/docker-entrypoint-initdb.d/3_analytics.sql
