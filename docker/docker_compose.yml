@@ -5,9 +5,8 @@ services:
     image: mysql:8.0
     container_name: hms_mysql_db
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: hospital_db
+    env_file:
+      - ../.env
     ports:
       - "3306:3306"
     volumes:
@@ -15,6 +14,6 @@ services:
       - ./seed_data.sql:/docker-entrypoint-initdb.d/2_seed.sql
       - ./analytics.sql:/docker-entrypoint-initdb.d/3_analytics.sql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD"]
       timeout: 5s
       retries: 5
