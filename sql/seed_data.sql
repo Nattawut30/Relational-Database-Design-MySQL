@@ -1,3 +1,9 @@
+-- ========================================
+-- HOSPITAL MANAGEMENT SYSTEM
+-- LinkedIn: www.linkedin.com/in/nattawut-bn
+-- GitHub: @Nattawut30
+-- Email: nattawut.boonnoon@hotmail.com
+
 USE hospital_db;
 
 SET FOREIGN_KEY_CHECKS = 0;
