@@ -19,6 +19,43 @@ Hospitals struggle with fragmented data systems that lead to scheduling conflict
 ## Relationship Diagram
 
 ![Demo Diagram](picture/relationship_diagram.jpg)
+*(Note: the image above is outdated — see the accurate diagram below, generated directly from `sql/schema.sql`)*
+
+```mermaid
+erDiagram
+    DEPARTMENTS ||--o{ STAFF : employs
+    DEPARTMENTS ||--o{ APPOINTMENTS : hosts
+    INSURANCE_PROVIDERS ||--o{ PATIENTS : covers
+    INSURANCE_PROVIDERS ||--o{ INSURANCE_CLAIMS : processes
+    PATIENTS ||--o{ APPOINTMENTS : books
+    PATIENTS ||--o{ MEDICAL_HISTORY : has
+    PATIENTS ||--o{ PRESCRIPTIONS : receives
+    PATIENTS ||--o{ ADMISSIONS : admitted_as
+    PATIENTS ||--o{ BILLING : billed_to
+    STAFF ||--o{ APPOINTMENTS : conducts
+    STAFF ||--o{ PRESCRIPTIONS : prescribes
+    STAFF ||--o{ ADMISSIONS : attends
+    APPOINTMENT_TYPES ||--o{ APPOINTMENTS : categorizes
+    APPOINTMENTS ||--o| BILLING : generates
+    WARDS ||--o{ BEDS : contains
+    BEDS ||--o{ ADMISSIONS : assigned_to
+    ADMISSIONS ||--o| BILLING : generates
+    BILLING ||--o{ INSURANCE_CLAIMS : claims
+
+    DEPARTMENTS { int department_id PK }
+    INSURANCE_PROVIDERS { int provider_id PK }
+    PATIENTS { int patient_id PK }
+    STAFF { int staff_id PK }
+    APPOINTMENT_TYPES { int type_id PK }
+    APPOINTMENTS { int appointment_id PK }
+    MEDICAL_HISTORY { int history_id PK }
+    PRESCRIPTIONS { int prescription_id PK }
+    WARDS { int ward_id PK }
+    BEDS { int bed_id PK }
+    ADMISSIONS { int admission_id PK }
+    BILLING { int billing_id PK }
+    INSURANCE_CLAIMS { int claim_id PK }
+```
 
 # <p align="center">Sample Queries<p/>
 **Prerequisites:**
@@ -27,6 +64,21 @@ https://www.mysql.com/
 - MySQL 8.0 or higher (Some functions won't work if lower than 8.0.)
 - At least 500MB free disk space.
 - SQL Knowledges
+
+## How to Run This Project
+
+**Option A — Docker (recommended):**
+```bash
+cp .env.example .env
+docker compose -f docker/docker_compose.yml up -d
+```
+
+**Option B — Local MySQL:**
+```bash
+mysql -u root -p < sql/schema.sql
+mysql -u root -p hospital_management < sql/seed_data.sql
+mysql -u root -p hospital_management < sql/analytics.sql
+```
 
 ## Basic Level
 

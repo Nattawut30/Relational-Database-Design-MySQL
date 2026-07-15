@@ -268,6 +268,87 @@ ALTER TABLE inventory
 ADD CONSTRAINT chk_inventory_cost
 CHECK (unit_cost >= 0 AND reorder_level > 0);
 
+-- ----------------------------------------
+-- Billing: exactly one source (appointment XOR admission), never both, never neither
+-- ----------------------------------------
+ALTER TABLE billing
+ADD CONSTRAINT chk_billing_single_source
+CHECK (
+    (admission_id IS NOT NULL AND appointment_id IS NULL)
+    OR
+    (admission_id IS NULL AND appointment_id IS NOT NULL)
+);
+
+-- ----------------------------------------
+-- Billing: total_amount must equal insurance_covered + patient_responsibility
+-- ----------------------------------------
+ALTER TABLE billing
+ADD CONSTRAINT chk_billing_math
+CHECK (total_amount = insurance_covered + patient_responsibility);
+
+-- ----------------------------------------
+-- Beds: only one ACTIVE admission (discharge_date IS NULL) per bed at a time.
+-- ----------------------------------------
+ALTER TABLE admissions
+ADD COLUMN active_bed_slot INT
+GENERATED ALWAYS AS (CASE WHEN discharge_date IS NULL THEN bed_id ELSE NULL END) STORED;
+
+ALTER TABLE admissions
+ADD CONSTRAINT uq_active_bed_slot UNIQUE (active_bed_slot);
+
+-- ----------------------------------------
+-- Billing: patient_id must match the patient on the referenced appointment/admission
+-- ----------------------------------------
+DELIMITER $$
+
+CREATE TRIGGER trg_billing_patient_match_insert
+BEFORE INSERT ON billing
+FOR EACH ROW
+BEGIN
+    DECLARE v_patient INT;
+
+    IF NEW.appointment_id IS NOT NULL THEN
+        SELECT patient_id INTO v_patient FROM appointments WHERE appointment_id = NEW.appointment_id;
+        IF v_patient IS NULL OR v_patient <> NEW.patient_id THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'billing.patient_id does not match the patient on the referenced appointment';
+        END IF;
+    END IF;
+
+    IF NEW.admission_id IS NOT NULL THEN
+        SELECT patient_id INTO v_patient FROM admissions WHERE admission_id = NEW.admission_id;
+        IF v_patient IS NULL OR v_patient <> NEW.patient_id THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'billing.patient_id does not match the patient on the referenced admission';
+        END IF;
+    END IF;
+END$$
+
+CREATE TRIGGER trg_billing_patient_match_update
+BEFORE UPDATE ON billing
+FOR EACH ROW
+BEGIN
+    DECLARE v_patient INT;
+
+    IF NEW.appointment_id IS NOT NULL THEN
+        SELECT patient_id INTO v_patient FROM appointments WHERE appointment_id = NEW.appointment_id;
+        IF v_patient IS NULL OR v_patient <> NEW.patient_id THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'billing.patient_id does not match the patient on the referenced appointment';
+        END IF;
+    END IF;
+
+    IF NEW.admission_id IS NOT NULL THEN
+        SELECT patient_id INTO v_patient FROM admissions WHERE admission_id = NEW.admission_id;
+        IF v_patient IS NULL OR v_patient <> NEW.patient_id THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'billing.patient_id does not match the patient on the referenced admission';
+        END IF;
+    END IF;
+END$$
+
+DELIMITER ;
+
 
 -- ========================================
 -- QUERY 3: Create Performance Indexes

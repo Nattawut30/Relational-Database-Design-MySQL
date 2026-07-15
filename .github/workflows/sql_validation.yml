@@ -26,10 +26,10 @@ jobs:
           
   
           echo "=== Step 1: Schema ==="
-          mysql -h 127.0.0.1 -u root -proot hospital_db < sql/schema.sql || true
+          mysql -h 127.0.0.1 -u root -proot hospital_db < sql/schema.sql
           
           echo "=== Step 2: Seed ==="
-          mysql -h 127.0.0.1 -u root -proot hospital_db < sql/seed_data.sql || true
+          mysql -h 127.0.0.1 -u root -proot hospital_db < sql/seed_data.sql
           
           echo "=== Step 3: Analytics ==="
-          mysql -h 127.0.0.1 -u root -proot hospital_db < sql/analytics.sql || true
+          mysql -h 127.0.0.1 -u root -proot hospital_db < sql/analytics.sql
