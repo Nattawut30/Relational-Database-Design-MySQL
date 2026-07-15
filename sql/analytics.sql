@@ -3,6 +3,8 @@
 -- LinkedIn: www.linkedin.com/in/nattawut-bn
 -- GitHub: @Nattawut30
 -- Email: nattawut.boonnoon@hotmail.com
+
+USE hospital_management;
 -- ========================================
 
 -- ========================================
