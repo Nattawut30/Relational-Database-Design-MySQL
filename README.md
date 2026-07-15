@@ -18,8 +18,6 @@ Hospitals struggle with fragmented data systems that lead to scheduling conflict
 
 ## Relationship Diagram
 
-![Demo Diagram](picture/relationship_diagram.jpg)
-*(Note: the image above is outdated — see the accurate diagram below, generated directly from `sql/schema.sql`)*
 
 ```mermaid
 erDiagram
