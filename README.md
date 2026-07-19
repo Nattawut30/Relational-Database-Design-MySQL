@@ -5,6 +5,10 @@
 
 ## Overview
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://github.com/Nattawut30/Relational-Database-Design-MySQL/actions/workflows/sql_validation.yml/badge.svg)](https://github.com/Nattawut30/Relational-Database-Design-MySQL/actions/workflows/sql_validation.yml)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/)
+
 Hospitals struggle with fragmented data systems that lead to scheduling conflicts, unused resources, and billing errors costing millions annually. I hope this database acts as a centralized backbone example, giving administrators clear visibility into operations so they can make better decisions that directly impact outcomes.
 
 ## Database Architecture
